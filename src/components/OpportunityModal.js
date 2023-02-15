@@ -37,7 +37,7 @@ const OpportunityModal = ({ modalState, handleModal, modalData }) => {
           <div className='box-content'>
             <div className='content-containers'>
               <Typography>Amount</Typography>
-              <Typography>${modalData.amount}</Typography>
+              <Typography>${modalData.amount?.toFixed(2)}</Typography>
             </div>
             <div className='content-containers'>
               <Typography>Product</Typography>
@@ -48,7 +48,7 @@ const OpportunityModal = ({ modalState, handleModal, modalData }) => {
               <Typography>{modalData.stage}</Typography>
             </div>
             <div className='content-containers'>
-              <Typography component='legend'>PILYTIX Tier</Typography>
+              <Typography>PILYTIX Tier</Typography>
               <Rating name='read-only' value={stars} readOnly />
               <Typography>{modalData.pilytixTier}</Typography>
             </div>

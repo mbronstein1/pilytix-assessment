@@ -24,11 +24,17 @@
 
 .content-containers {
   border: 1px solid black;
-  width: 49%;
-  height: 100px;
+  width: 45%;
   flex: 1 2 auto;
+  padding: 10px;
 }
 
 .content-containers * {
   padding-block: 2px;
+}
+
+.content-containers p:first-child {
+  font-size: 18px;
+  font-weight: bold;
+  color: purple;
 }

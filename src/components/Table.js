@@ -54,7 +54,7 @@ export default function BasicTable({ handleData, handleModal }) {
               <TableCell align='right'>{row.repProbability}</TableCell>
               <TableCell align='right'>{row.pilytixProbability}</TableCell>
               <TableCell align='left'>{row.pilytixTier}</TableCell>
-              <TableCell align='right'>{row.amount}</TableCell>
+              <TableCell align='right'>${row.amount}</TableCell>
               <TableCell align='left'>{row.product}</TableCell>
               <TableCell align='left'>{row.salesRepName}</TableCell>
             </TableRow>
