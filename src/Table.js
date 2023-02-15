@@ -39,7 +39,12 @@ export default function BasicTable() {
             <TableRow
               onClick={event => handleRowClick(event, row)}
               key={row.oppId}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 }, '&:nth-of-type(even)': { backgroundColor: 'lightgrey' } }}>
+              sx={{
+                '&:last-child td, &:last-child th': { border: 0 },
+                '&:nth-of-type(even)': { backgroundColor: 'lightgrey' },
+                '&:hover': { backgroundColor: 'lightpink' },
+                transition: '.3s',
+              }}>
               <TableCell component='th' scope='row'>
                 {row.oppName}
               </TableCell>
