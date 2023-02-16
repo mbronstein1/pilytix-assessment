@@ -73,7 +73,7 @@ const LineChart = ({ probHistory }) => {
 
     display = <Line data={lineData} options={lineOptions} plugins={[plugin]} />;
   }
-  return <Box>{display}</Box>;
+  return <Box sx={{ width: '80%', marginInline: 'auto' }}>{display}</Box>;
 };
 
 export default LineChart;

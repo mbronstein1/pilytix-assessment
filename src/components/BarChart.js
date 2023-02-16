@@ -59,7 +59,7 @@ const BarChart = ({ pilytixFactors }) => {
   };
 
   return (
-    <>
+    <div style={{ width: '80%', marginInline: 'auto' }}>
       {display}
       <FormGroup>
         <FormControlLabel control={<Switch onClick={handleToggle} />} label={`${showDetails ? 'Hide Details' : 'Show Details'}`} />
@@ -79,7 +79,7 @@ const BarChart = ({ pilytixFactors }) => {
           </ul>
         </Box>
       )}
-    </>
+    </div>
   );
 };
 
