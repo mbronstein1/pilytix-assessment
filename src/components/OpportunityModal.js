@@ -1,8 +1,8 @@
 import React from 'react';
-import { Modal, Button, Typography, Fade, Rating, Card } from '@mui/material';
+import { Modal, Button, Typography, Fade, Card } from '@mui/material';
 import OppTabs from './OppTabs';
-import GaugeChart from 'react-gauge-chart';
 import './OpportunityModal.css';
+import Content from './Content';
 
 // Stylings
 const cardStyle = {
@@ -22,21 +22,11 @@ const modalStyle = {
   overflowY: 'auto',
 };
 
-const gaugeColors = ['rgb(255, 0, 0)', 'rgb(255,255,0)', 'rgb(1,255,0)'];
-
-const gaugeStyle = {
-  width: 200,
-  maxWidth: '90%',
-  backgroundColor: 'rgba(0, 0, 0, .5)',
-  borderRadius: '5px',
-  marginInline: 'auto',
-  marginTop: 15,
-};
-
 let currentId;
 
 const OpportunityModal = ({ data, modalState, handleModal, modalData, filterDataHandler }) => {
-  const stars = modalData.pilytixTier?.split(' ')[0];
+  // Store the stars number in a variable for the Rating component
+  const stars = +modalData.pilytixTier?.split(' ')[0];
   currentId = modalData.oppId;
 
   // Handle next and previous opportunities from Modal
@@ -65,33 +55,14 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
             </Typography>
           </div>
           <div className='box-content'>
-            <div className='content-containers'>
-              <Typography>Amount</Typography>
-              <Typography>${modalData.amount?.toFixed(2)}</Typography>
-            </div>
-            <div className='content-containers'>
-              <Typography>Product</Typography>
-              <Typography>{modalData.product}</Typography>
-            </div>
-            <div className='content-containers'>
-              <Typography>Stage</Typography>
-              <Typography>{modalData.stage}</Typography>
-            </div>
-            <div className='content-containers'>
-              <Typography>PILYTIX Tier</Typography>
-              <Rating name='read-only' value={+stars} readOnly />
-              <Typography>{modalData.pilytixTier}</Typography>
-            </div>
-            <div className='content-containers'>
-              <Typography>Rep Probability</Typography>
-              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.repProbability} animate={false} />
-            </div>
-            <div className='content-containers'>
-              <Typography>PILYTIX Probability</Typography>
-              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} animate={false} />
-            </div>
+            <Content label='Amount' data={`$${modalData.amount?.toFixed(2)}`} />
+            <Content label='Product' data={modalData.product} />
+            <Content label='Stage' data={modalData.stage} />
+            <Content label='PILYTIX Tier' rating={stars} data={modalData.pilytixTier} />
+            <Content label='Rep Probability' percent={modalData.repProbability} />
+            <Content label='PILYTIX Probability' percent={modalData.pilytixProbability} />
           </div>
-          {/* OppTabs for charts */}
+          {/* Tabs for charts */}
           <OppTabs oppData={modalData} />
           <div className='button-control'>
             <Button name='previous' onClick={handleOppChange}>
