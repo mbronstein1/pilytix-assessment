@@ -13,14 +13,14 @@ const cardStyle = {
   padding: '20px 40px',
   boxSizing: 'border-box',
   overflowY: 'auto',
-  overflowX: 'hidden',
+  // overflowX: 'hidden',
 };
 
 const modalStyle = {
   height: '100%',
   display: 'grid',
   placeItems: 'center',
-  overflowY: 'auto',
+  // overflowY: 'auto',
 };
 
 let currentId;
@@ -77,9 +77,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
             <Typography id='modal-modal-title' variant='p' component='h2'>
               {modalData.oppName}
             </Typography>
-            <Button onClick={() => handleModal(false)} style={{ color: 'purple' }}>
-              X
-            </Button>
+            <Button onClick={() => handleModal(false)}>X</Button>
             <Typography className='sales-rep' variant='p' component='h3'>
               Sales Rep: {modalData.salesRepName}
             </Typography>
