@@ -4,6 +4,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { Chart as ChartJS } from 'chart.js/auto';
+import { Typography, Box } from '@mui/material';
 
 const detailsStyles = {
   border: '1px black dotted',
@@ -14,13 +15,13 @@ const detailsStyles = {
 
 let display;
 
-const BarChart = ({ oppData }) => {
+const BarChart = ({ pilytixFactors }) => {
   const [showDetails, setShowDetails] = useState(false);
 
-  if (oppData === null || oppData.length === 0) {
-    display = <p style={{ textAlign: 'center' }}>There is no data</p>;
+  if (pilytixFactors === null || pilytixFactors.length === 0) {
+    display = <Typography style={{ textAlign: 'center' }}>There is no data</Typography>;
   } else {
-    const sortedData = oppData.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
+    const sortedData = pilytixFactors.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
     const factorValue = sortedData.map(factor => factor.weight.value);
     const barData = {
       labels: sortedData.map(factor => factor.name),
@@ -63,17 +64,20 @@ const BarChart = ({ oppData }) => {
       <FormGroup>
         <FormControlLabel control={<Switch onClick={handleToggle} />} label={`${showDetails ? 'Hide Details' : 'Show Details'}`} />
       </FormGroup>
-      {oppData && showDetails && (
-        <div style={detailsStyles}>
+      {pilytixFactors && showDetails && (
+        <Box style={detailsStyles}>
           <ul>
-            {oppData.map((opp, index) => (
+            {pilytixFactors.map((opp, index) => (
               <li key={`opportunity-msg: ${opp.oppId}-${index}`}>
                 <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>{opp.name}:</strong>
-                <span style={{ color: 'white' }}> {opp.message}</span>
+                <Typography component='span' style={{ color: 'white' }}>
+                  {' '}
+                  {opp.message}
+                </Typography>
               </li>
             ))}
           </ul>
-        </div>
+        </Box>
       )}
     </>
   );

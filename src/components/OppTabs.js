@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import BarChart from './BarChart';
+import LineChart from './LineChart';
 
 function TabPanel({ children, value, index, ...other }) {
   return (
@@ -49,19 +50,19 @@ const OppTabs = ({ oppData }) => {
   };
 
   return (
-    <div>
+    <Box>
       <Tabs textColor='secondary' indicatorColor='secondary' variant='fullWidth' value={value} onChange={handleChange} aria-label='basic tabs example' centered>
         <Tab label='Probability History' {...a11yProps(0)} />
-        <Tab label='PILYTIX Factors Increasing Win' {...a11yProps(1)} />
+        <Tab label='PILYTIX Win Factors' {...a11yProps(1)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        Item One
+        <LineChart probHistory={oppData.probabilityHistory} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <BarChart oppData={pilytixFactors} />
+        <BarChart pilytixFactors={pilytixFactors} />
       </TabPanel>
-    </div>
+    </Box>
   );
 };
 
