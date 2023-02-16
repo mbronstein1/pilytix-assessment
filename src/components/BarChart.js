@@ -103,15 +103,13 @@ const BarChart = ({ pilytixFactors }) => {
       {/* Details block */}
       {pilytixFactors && showDetails && (
         <Box style={detailsStyles}>
-          <ul>
+          <ul style={{ listStyle: 'none' }}>
             {pilytixFactors.map((opp, index) => (
               <li key={`opportunity-msg: ${opp.oppId}-${index}`}>
-                <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>
-                  {opp.name} ({opp.weight.description}):
-                </strong>
+                <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>{opp.name}:</strong>
                 <Typography component='span' style={{ color: 'white' }}>
                   {' '}
-                  {opp.message}
+                  {opp.message} --&gt; <span style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>({opp.weight.description})</span>
                 </Typography>
               </li>
             ))}

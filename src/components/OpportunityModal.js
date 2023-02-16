@@ -3,6 +3,7 @@ import { Modal, Button, Typography, Fade, Card } from '@mui/material';
 import OppTabs from './OppTabs';
 import './OpportunityModal.css';
 import Content from './Content';
+import { useSwipeable } from 'react-swipeable';
 
 // Stylings
 const cardStyle = {
@@ -29,6 +30,18 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   const stars = +modalData.pilytixTier?.split(' ')[0];
   currentId = modalData.oppId;
 
+  const swipeHandler = useSwipeable({
+    onSwipedLeft: () => {
+      currentId = currentId + 1 > 10 ? 1 : currentId + 1;
+      filterDataHandler(currentId);
+    },
+    onSwipedRight: () => {
+      currentId = currentId - 1 <= 0 ? data.length : currentId - 1;
+      filterDataHandler(currentId);
+    },
+    trackMouse: true,
+  });
+
   // Handle next and previous opportunities from Modal
   const handleOppChange = e => {
     if (e.target.name === 'next') {
@@ -40,7 +53,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   };
 
   return (
-    <Modal sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+    <Modal {...swipeHandler} sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
       <Fade in={modalState}>
         <Card sx={cardStyle}>
           <div className='box-header'>
