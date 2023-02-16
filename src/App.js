@@ -8,10 +8,6 @@ export default function App() {
   // Manage state for Modal, the selected opportunity, and the ID for 'next/previous' functionality
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOpportunity, setSelectedOpportunity] = useState({});
-  // current opportunity id = useState()
-  //setCurrent opp id = e.target.click
-  // ++ or --
-  // filter opp array where opp id = next id
 
   /**
    * A basic table to display all non-nested information from opportunities.json
