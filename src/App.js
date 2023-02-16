@@ -9,9 +9,6 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedOpportunity, setSelectedOpportunity] = useState({});
 
-  /**
-   * A basic table to display all non-nested information from opportunities.json
-   */
   const data = opportunities.default;
 
   const filteredData = id => {
