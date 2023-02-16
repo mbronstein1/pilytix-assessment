@@ -6,7 +6,7 @@ import Switch from '@mui/material/Switch';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Typography, Box } from '@mui/material';
 import plugin from '../Utils/chartPlugin';
-import classes from './Chart.module.css';
+import './Chart.css';
 
 // Stylings for the details element
 const detailsStyles = {
@@ -94,7 +94,7 @@ const BarChart = ({ pilytixFactors }) => {
   };
 
   return (
-    <div className={classes.chart}>
+    <div className='chart'>
       {display}
       {/* Toggle block */}
       <FormGroup>
@@ -106,7 +106,9 @@ const BarChart = ({ pilytixFactors }) => {
           <ul>
             {pilytixFactors.map((opp, index) => (
               <li key={`opportunity-msg: ${opp.oppId}-${index}`}>
-                <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>{opp.name}:</strong>
+                <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>
+                  {opp.name} ({opp.weight.description}):
+                </strong>
                 <Typography component='span' style={{ color: 'white' }}>
                   {' '}
                   {opp.message}
