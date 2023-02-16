@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Rating } from '@mui/material';
 import GaugeChart from 'react-gauge-chart';
 
+// Gauge stylings
 const gaugeColors = ['rgb(255, 0, 0)', 'rgb(255,255,0)', 'rgb(1,255,0)'];
 
 const gaugeStyle = {
@@ -17,6 +18,7 @@ const Content = ({ label, data, rating, percent }) => {
   return (
     <div className='content-containers'>
       <Typography>{label}</Typography>
+      {/* Conditionally render components based on whether they are passed as props or not */}
       {rating && <Rating name='read-only' value={rating} readOnly />}
       {data && <Typography>{data}</Typography>}
       {percent && <GaugeChart style={gaugeStyle} colors={gaugeColors} percent={percent} animate={false} />}

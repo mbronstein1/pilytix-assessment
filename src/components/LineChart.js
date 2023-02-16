@@ -6,9 +6,11 @@ import { Chart as ChartJS } from 'chart.js/auto';
 let display;
 
 const LineChart = ({ probHistory }) => {
+  // Validation handling if there is no data
   if (probHistory === null || probHistory.length === 0) {
     display = <Typography style={{ textAlign: 'center' }}>There is no data</Typography>;
   } else {
+    // Set line chart data for ChartJS
     const lineData = {
       labels: probHistory.map(history => history.daysAgo),
       datasets: [
@@ -29,6 +31,7 @@ const LineChart = ({ probHistory }) => {
       ],
     };
 
+    // define custom plugin for ChartJS provided by ChartJS to change chart background color
     const plugin = {
       id: 'customCanvasBackgroundColor',
       beforeDraw: (chart, args, options) => {
@@ -49,20 +52,22 @@ const LineChart = ({ probHistory }) => {
       },
       scales: {
         y: {
+          // Allows to customize yAxis ticks
           ticks: {
-            // Include a dollar sign in the ticks
             callback: function (value, index, ticks) {
               return `${value * 100}%`;
             },
           },
           min: 0,
           max: 1,
+          // sets yAxis title
           title: {
             display: true,
             text: 'Probability',
           },
         },
         x: {
+          // sets xAxis title
           title: {
             display: true,
             text: 'Days Ago',

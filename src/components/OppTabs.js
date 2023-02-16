@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import BarChart from './BarChart';
 import LineChart from './LineChart';
 
+// Create TabPanel UI component
 function TabPanel({ children, value, index, ...other }) {
   return (
     <div role='tabpanel' hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
@@ -25,6 +26,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
+// Accessibility for Tabs
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -36,15 +38,16 @@ let pilytixFactors;
 
 const OppTabs = ({ oppData }) => {
   const [value, setValue] = useState(0);
+  // set pilytixFactors variable depending on whether either arrays are not null, or one or the other is null so all of the factors can be displayed in the same chart
   if (oppData.pilytixFactorsIncreasingWin && oppData.pilytixFactorsDecreasingWin) {
     pilytixFactors = [...oppData.pilytixFactorsIncreasingWin, ...oppData.pilytixFactorsDecreasingWin];
-    console.log(pilytixFactors);
   } else if (oppData.pilytixFactorsIncreasingWin && oppData.pilytixFactorsDecreasingWin === null) {
     pilytixFactors = oppData.pilytixFactorsIncreasingWin;
   } else {
     pilytixFactors = oppData.pilytixFactorsDecreasingWin;
   }
 
+  // Monitor value for tabs
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
