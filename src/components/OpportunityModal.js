@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button, Typography, Fade, Rating, Card } from '@mui/material';
+import OppTabs from './OppTabs';
 import GaugeChart from 'react-gauge-chart';
 import './OpportunityModal.css';
 
@@ -8,7 +9,7 @@ const cardStyle = {
   backgroundColor: 'white',
   width: '90%',
   height: '750px',
-  padding: '40px',
+  padding: '20px 40px',
   boxSizing: 'border-box',
   overflowY: 'auto',
   overflowX: 'hidden',
@@ -24,7 +25,7 @@ const modalStyle = {
 const gaugeColors = ['rgb(255, 0, 0)', 'rgb(255,255,0)', 'rgb(1,255,0)'];
 
 const gaugeStyle = {
-  width: 250,
+  width: 200,
   maxWidth: '90%',
   backgroundColor: 'rgba(0, 0, 0, .5)',
   borderRadius: '5px',
@@ -56,7 +57,9 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
             <Typography id='modal-modal-title' variant='p' component='h2'>
               {modalData.oppName}
             </Typography>
-            <Button onClick={() => handleModal(false)}>X</Button>
+            <Button onClick={() => handleModal(false)} style={{ color: 'purple' }}>
+              X
+            </Button>
             <Typography className='sales-rep' variant='p' component='h3'>
               Sales Rep: {modalData.salesRepName}
             </Typography>
@@ -88,7 +91,8 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
               <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} animate={false} />
             </div>
           </div>
-          {/* Tabs for charts */}
+          {/* OppTabs for charts */}
+          <OppTabs oppData={modalData} />
           <div className='button-control'>
             <Button name='previous' onClick={handleOppChange}>
               Previous

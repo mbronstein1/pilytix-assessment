@@ -36,8 +36,9 @@ export default function BasicTable({ handleData, handleModal, data }) {
               key={row.oppId}
               sx={{
                 '&:last-child td, &:last-child th': { border: 0 },
-                '&:nth-of-type(even)': { backgroundColor: 'lightgrey' },
-                '&:hover': { backgroundColor: 'lightpink' },
+                backgroundColor: 'rgb(230, 230, 250)',
+                '&:nth-of-type(even)': { backgroundColor: '	rgb(224, 176, 255)' },
+                '&:hover': { backgroundColor: 'rgb(204, 204, 255)', cursor: 'pointer' },
                 transition: '.3s',
               }}>
               <TableCell component='th' scope='row'>
