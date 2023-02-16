@@ -4,8 +4,8 @@ import App from './App';
 
 /* Time invested
     Research/planning -> 2 hours
-    Coding -> 6 hours
-    Cleanup -> 1 hour
+    Coding/troubleshooting -> 6 hours
+    Cleanup/adding comments -> 1 hour
 */
 
 /* 
