@@ -40,9 +40,9 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   };
 
   return (
-    <Modal sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+    <Modal className='modal-container' open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
       <Fade in={modalState}>
-        <Card sx={cardStyle}>
+        <Card className='card-container'>
           <div className='box-header'>
             <Typography id='modal-modal-title' variant='p' component='h2'>
               {modalData.oppName}

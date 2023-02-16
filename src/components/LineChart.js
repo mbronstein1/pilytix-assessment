@@ -3,6 +3,7 @@ import { Typography, Box } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
 import plugin from '../Utils/chartPlugin';
+import classes from './Chart.module.css';
 
 let display;
 
@@ -72,7 +73,8 @@ const LineChart = ({ probHistory }) => {
 
     display = <Line data={lineData} options={lineOptions} plugins={[plugin]} />;
   }
-  return <Box sx={{ width: '80%', marginInline: 'auto' }}>{display}</Box>;
+
+  return <div className={classes.chart}>{display}</div>;
 };
 
 export default LineChart;

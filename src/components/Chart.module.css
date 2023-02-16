@@ -1,0 +1,11 @@
+.chart {
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 790px) {
+  .chart {
+    width: 80%;
+  }
+}

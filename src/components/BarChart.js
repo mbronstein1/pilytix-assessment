@@ -6,6 +6,7 @@ import Switch from '@mui/material/Switch';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Typography, Box } from '@mui/material';
 import plugin from '../Utils/chartPlugin';
+import classes from './Chart.module.css';
 
 // Stylings for the details element
 const detailsStyles = {
@@ -93,7 +94,7 @@ const BarChart = ({ pilytixFactors }) => {
   };
 
   return (
-    <div style={{ width: '80%', marginInline: 'auto' }}>
+    <div className={classes.chart}>
       {display}
       {/* Toggle block */}
       <FormGroup>
