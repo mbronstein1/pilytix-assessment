@@ -1,10 +1,10 @@
 import React from 'react';
-import { Modal, Button, Box, Typography, Fade, Rating } from '@mui/material';
+import { Modal, Button, Typography, Fade, Rating, Card } from '@mui/material';
 import GaugeChart from 'react-gauge-chart';
 import './OpportunityModal.css';
 
 // Stylings
-const boxStyle = {
+const cardStyle = {
   backgroundColor: 'white',
   width: '90%',
   height: '750px',
@@ -39,20 +39,11 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   currentId = modalData.oppId;
 
   // Handle next and previous opportunities from Modal
-  const previousOpp = () => {
-    if (currentId - 1 <= 0) {
-      currentId = data.length;
+  const handleOppChange = e => {
+    if (e.target.name === 'next') {
+      currentId = currentId + 1 > 10 ? 1 : currentId + 1;
     } else {
-      currentId--;
-    }
-    filterDataHandler(currentId);
-  };
-
-  const nextOpp = () => {
-    if (currentId + 1 > 10) {
-      currentId = 1;
-    } else {
-      currentId++;
+      currentId = currentId - 1 <= 0 ? data.length : currentId - 1;
     }
     filterDataHandler(currentId);
   };
@@ -60,7 +51,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   return (
     <Modal sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
       <Fade in={modalState}>
-        <Box sx={boxStyle}>
+        <Card sx={cardStyle}>
           <div className='box-header'>
             <Typography id='modal-modal-title' variant='p' component='h2'>
               {modalData.oppName}
@@ -97,11 +88,16 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
               <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} animate={false} />
             </div>
           </div>
+          {/* Tabs for charts */}
           <div className='button-control'>
-            <Button onClick={previousOpp}>Previous</Button>
-            <Button onClick={nextOpp}>Next</Button>
+            <Button name='previous' onClick={handleOppChange}>
+              Previous
+            </Button>
+            <Button name='next' onClick={handleOppChange}>
+              Next
+            </Button>
           </div>
-        </Box>
+        </Card>
       </Fade>
     </Modal>
   );
