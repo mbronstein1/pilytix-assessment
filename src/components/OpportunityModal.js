@@ -9,7 +9,7 @@ import { useSwipeable } from 'react-swipeable';
 const cardStyle = {
   backgroundColor: 'white',
   width: '90%',
-  height: '750px',
+  height: '95%',
   padding: '20px 40px',
   boxSizing: 'border-box',
   overflowY: 'auto',
@@ -17,7 +17,8 @@ const cardStyle = {
 };
 
 const modalStyle = {
-  height: '100%',
+  maxHeight: '100vh',
+  marginBlock: 'auto',
   display: 'grid',
   placeItems: 'center',
   // overflowY: 'auto',
