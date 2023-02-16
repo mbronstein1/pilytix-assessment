@@ -5,6 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Typography, Box } from '@mui/material';
+import plugin from '../Utils/chartPlugin';
 
 // Stylings for the details element
 const detailsStyles = {
@@ -47,9 +48,29 @@ const BarChart = ({ pilytixFactors }) => {
         return value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)';
       },
       scales: {
+        // Customize y axis
         y: {
+          ticks: {
+            color: 'rgb(102, 0, 153)',
+          },
+          title: {
+            display: true,
+            text: 'Weighted Value',
+            color: 'rgb(102, 0, 153)',
+          },
           max: 3,
           min: -3,
+        },
+        // Customize x axis
+        x: {
+          ticks: {
+            color: 'rgb(102, 0, 153)',
+          },
+          title: {
+            display: true,
+            text: 'Factors',
+            color: 'rgb(102, 0, 153)',
+          },
         },
       },
       // Removing legend
@@ -57,10 +78,13 @@ const BarChart = ({ pilytixFactors }) => {
         legend: {
           display: false,
         },
+        customCanvasBackgroundColor: {
+          color: 'rgb(207, 159, 255)',
+        },
       },
     };
 
-    display = <Bar data={barData} options={barOptions} />;
+    display = <Bar data={barData} options={barOptions} plugins={[plugin]} />;
   }
 
   // Handle toggle state

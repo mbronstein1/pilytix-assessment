@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Box } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
+import plugin from '../Utils/chartPlugin';
 
 let display;
 
@@ -31,19 +32,6 @@ const LineChart = ({ probHistory }) => {
       ],
     };
 
-    // define custom plugin for ChartJS provided by ChartJS to change chart background color
-    const plugin = {
-      id: 'customCanvasBackgroundColor',
-      beforeDraw: (chart, args, options) => {
-        const { ctx } = chart;
-        ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = options.color || '#99ffff';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.restore();
-      },
-    };
-
     const lineOptions = {
       plugins: {
         customCanvasBackgroundColor: {
@@ -57,6 +45,7 @@ const LineChart = ({ probHistory }) => {
             callback: function (value, index, ticks) {
               return `${value * 100}%`;
             },
+            color: 'rgb(102, 0, 153)',
           },
           min: 0,
           max: 1,
@@ -64,13 +53,18 @@ const LineChart = ({ probHistory }) => {
           title: {
             display: true,
             text: 'Probability',
+            color: 'rgb(102, 0, 153)',
           },
         },
         x: {
+          ticks: {
+            color: 'rgb(102, 0, 153)',
+          },
           // sets xAxis title
           title: {
             display: true,
             text: 'Days Ago',
+            color: 'rgb(102, 0, 153)',
           },
         },
       },
