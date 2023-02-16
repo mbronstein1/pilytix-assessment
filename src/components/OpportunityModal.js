@@ -81,6 +81,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
             <Button name='previous' onClick={handleOppChange}>
               Previous
             </Button>
+            <p>Swipe or click buttons to navigate between adjacent opportunity cards</p>
             <Button name='next' onClick={handleOppChange}>
               Next
             </Button>
