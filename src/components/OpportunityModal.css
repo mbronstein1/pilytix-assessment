@@ -38,3 +38,8 @@
   font-weight: bold;
   color: purple;
 }
+
+.button-control {
+  display: flex;
+  justify-content: space-between;
+}

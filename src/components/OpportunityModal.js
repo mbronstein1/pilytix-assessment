@@ -3,6 +3,7 @@ import { Modal, Button, Box, Typography, Fade, Rating } from '@mui/material';
 import GaugeChart from 'react-gauge-chart';
 import './OpportunityModal.css';
 
+// Stylings
 const boxStyle = {
   backgroundColor: 'white',
   width: '90%',
@@ -31,8 +32,30 @@ const gaugeStyle = {
   marginTop: 15,
 };
 
-const OpportunityModal = ({ modalState, handleModal, modalData }) => {
+let currentId;
+
+const OpportunityModal = ({ data, modalState, handleModal, modalData, filterDataHandler }) => {
   const stars = modalData.pilytixTier?.split(' ')[0];
+  currentId = modalData.oppId;
+
+  // Handle next and previous opportunities from Modal
+  const previousOpp = () => {
+    if (currentId - 1 <= 0) {
+      currentId = data.length;
+    } else {
+      currentId--;
+    }
+    filterDataHandler(currentId);
+  };
+
+  const nextOpp = () => {
+    if (currentId + 1 > 10) {
+      currentId = 1;
+    } else {
+      currentId++;
+    }
+    filterDataHandler(currentId);
+  };
 
   return (
     <Modal sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
@@ -62,17 +85,21 @@ const OpportunityModal = ({ modalState, handleModal, modalData }) => {
             </div>
             <div className='content-containers'>
               <Typography>PILYTIX Tier</Typography>
-              <Rating name='read-only' value={stars} readOnly />
+              <Rating name='read-only' value={+stars} readOnly />
               <Typography>{modalData.pilytixTier}</Typography>
             </div>
             <div className='content-containers'>
               <Typography>Rep Probability</Typography>
-              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.repProbability} />
+              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.repProbability} animate={false} />
             </div>
             <div className='content-containers'>
               <Typography>PILYTIX Probability</Typography>
-              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} />
+              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} animate={false} />
             </div>
+          </div>
+          <div className='button-control'>
+            <Button onClick={previousOpp}>Previous</Button>
+            <Button onClick={nextOpp}>Next</Button>
           </div>
         </Box>
       </Fade>

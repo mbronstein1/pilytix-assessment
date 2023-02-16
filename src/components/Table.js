@@ -7,14 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import * as opportunities from '../opportunities.json';
-
-export default function BasicTable({ handleData, handleModal }) {
-  /**
-   * A basic table to display all non-nested information from opportunities.json
-   */
-  const data = opportunities.default;
-
+export default function BasicTable({ handleData, handleModal, data }) {
   // Pass data up to App.js to be able to communicate w/ Modal
   function handleRowClick(event, row) {
     handleModal(true);
