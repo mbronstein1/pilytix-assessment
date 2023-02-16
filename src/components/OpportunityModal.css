@@ -26,11 +26,11 @@
   border: 1px solid black;
   width: 45%;
   flex: 1 2 auto;
-  padding: 10px;
+  padding: 8px;
 }
 
 .content-containers * {
-  padding-block: 2px;
+  padding-block: 1px;
 }
 
 .content-containers p:first-child {

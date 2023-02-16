@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button, Box, Typography, Fade, Rating } from '@mui/material';
+import GaugeChart from 'react-gauge-chart';
 import './OpportunityModal.css';
 
 const boxStyle = {
@@ -16,6 +17,18 @@ const modalStyle = {
   height: '100%',
   display: 'grid',
   placeItems: 'center',
+  overflowY: 'auto',
+};
+
+const gaugeColors = ['rgb(255, 0, 0)', 'rgb(255,255,0)', 'rgb(1,255,0)'];
+
+const gaugeStyle = {
+  width: 250,
+  maxWidth: '90%',
+  backgroundColor: 'rgba(0, 0, 0, .5)',
+  borderRadius: '5px',
+  marginInline: 'auto',
+  marginTop: 15,
 };
 
 const OpportunityModal = ({ modalState, handleModal, modalData }) => {
@@ -54,11 +67,11 @@ const OpportunityModal = ({ modalState, handleModal, modalData }) => {
             </div>
             <div className='content-containers'>
               <Typography>Rep Probability</Typography>
-              <Typography>{modalData.repProbability}</Typography>
+              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.repProbability} />
             </div>
             <div className='content-containers'>
               <Typography>PILYTIX Probability</Typography>
-              <Typography>{modalData.pilytixProbability}</Typography>
+              <GaugeChart id='gauge-chart2' style={gaugeStyle} colors={gaugeColors} percent={modalData.pilytixProbability} />
             </div>
           </div>
         </Box>
