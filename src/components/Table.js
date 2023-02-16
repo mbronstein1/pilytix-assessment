@@ -18,7 +18,7 @@ export default function BasicTable({ handleData, handleModal, data }) {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
         <TableHead>
-          <TableRow sx={{ borderBottom: '5px solid black' }}>
+          <TableRow sx={{ borderBottom: '5px solid black', '& > th': { fontWeight: 'bold', fontSize: '18px' } }}>
             <TableCell align='left'>Opp Name</TableCell>
             <TableCell align='left'>Opp Stage</TableCell>
             <TableCell align='right'>Rep Probability</TableCell>
