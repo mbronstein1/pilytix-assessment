@@ -52,8 +52,25 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
     filterDataHandler(currentId);
   };
 
+  const handleKeyChange = e => {
+    if (e.keyCode === 39) {
+      currentId = currentId + 1 > 10 ? 1 : currentId + 1;
+    }
+    if (e.keyCode === 37) {
+      currentId = currentId - 1 <= 0 ? data.length : currentId - 1;
+    }
+    filterDataHandler(currentId);
+  };
+
   return (
-    <Modal {...swipeHandler} sx={modalStyle} open={modalState} onClose={() => handleModal(false)} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+    <Modal
+      onKeyDown={handleKeyChange}
+      {...swipeHandler}
+      sx={modalStyle}
+      open={modalState}
+      onClose={() => handleModal(false)}
+      aria-labelledby='modal-modal-title'
+      aria-describedby='modal-modal-description'>
       <Fade in={modalState}>
         <Card sx={cardStyle}>
           <div className='box-header'>
@@ -82,7 +99,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
               Previous
             </Button>
             <div style={{ marginInline: '20px', textAlign: 'center' }}>
-              <p>Swipe or click buttons to navigate between adjacent opportunity cards</p>
+              <p>Swipe, use arrow keys, or click buttons to navigate between adjacent opportunity cards</p>
             </div>
             <Button name='next' onClick={handleOppChange}>
               Next
