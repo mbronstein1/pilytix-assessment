@@ -6,14 +6,8 @@ import Content from './Content';
 import { useSwipeable } from 'react-swipeable';
 
 // Stylings
-const cardStyle = {
-  backgroundColor: 'white',
-  width: '90%',
-  height: '95%',
-  padding: '20px 40px',
-  boxSizing: 'border-box',
+const overFlow = {
   overflowY: 'auto',
-  // overflowX: 'hidden',
 };
 
 const modalStyle = {
@@ -21,7 +15,6 @@ const modalStyle = {
   marginBlock: 'auto',
   display: 'grid',
   placeItems: 'center',
-  // overflowY: 'auto',
 };
 
 let currentId;
@@ -67,13 +60,14 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
     <Modal
       onKeyDown={handleKeyChange}
       {...swipeHandler}
-      sx={modalStyle}
+      // sx={modalStyle}
+      className='modal-container'
       open={modalState}
       onClose={() => handleModal(false)}
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'>
       <Fade in={modalState}>
-        <Card sx={cardStyle}>
+        <Card className='card-container' sx={overFlow}>
           <div className='box-header'>
             <Typography id='modal-modal-title' variant='p' component='h2'>
               {modalData.oppName}

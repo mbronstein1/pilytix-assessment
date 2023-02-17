@@ -109,8 +109,10 @@ const BarChart = ({ pilytixFactors }) => {
                 <strong style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>{opp.name}:</strong>
                 <Typography component='span' style={{ color: 'white' }}>
                   {' '}
-                  {opp.message} --&gt; <span style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)' }}>({opp.weight.description})</span>
+                  <li>{opp.message}</li>
+                  <span style={{ color: opp.weight.value > 0 ? 'rgb(1,255,0)' : 'rgb(255,0,0)', fontSize: '14px' }}>({opp.weight.description})</span>
                 </Typography>
+                <hr style={{ width: '95%', marginRight: '50px' }} />
               </li>
             ))}
           </ul>
