@@ -10,13 +10,6 @@ const overFlow = {
   overflowY: 'auto',
 };
 
-const modalStyle = {
-  maxHeight: '100vh',
-  marginBlock: 'auto',
-  display: 'grid',
-  placeItems: 'center',
-};
-
 let currentId;
 
 const OpportunityModal = ({ data, modalState, handleModal, modalData, filterDataHandler }) => {
@@ -24,6 +17,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
   const stars = +modalData.pilytixTier?.split(' ')[0];
   currentId = modalData.oppId;
 
+  // Swipe functionality for next and previous opps
   const swipeHandler = useSwipeable({
     onSwipedLeft: () => {
       currentId = currentId + 1 > 10 ? 1 : currentId + 1;
@@ -46,6 +40,7 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
     filterDataHandler(currentId);
   };
 
+  // Keydown functionality for next and previous opps
   const handleKeyChange = e => {
     if (e.keyCode === 39) {
       currentId = currentId + 1 > 10 ? 1 : currentId + 1;
@@ -60,7 +55,6 @@ const OpportunityModal = ({ data, modalState, handleModal, modalData, filterData
     <Modal
       onKeyDown={handleKeyChange}
       {...swipeHandler}
-      // sx={modalStyle}
       className='modal-container'
       open={modalState}
       onClose={() => handleModal(false)}
